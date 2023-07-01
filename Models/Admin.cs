@@ -5,12 +5,9 @@ namespace BigBang_Assessment_2.Models
     public class Admin
     {
         [Key]
-        public int AdminId { get; set; }
-
-        public string? AdminName { get; set; } // = "admin";
-
-        public string AdminEmail { get; set; }
-        public string AdminPassword { get; set; }
+        public int Admin_Id { get; set; }
+        public string? Admin_Name { get; set; }
+        public string? Admin_Password { get; set; }
 
         public virtual ICollection<Doctor>? Doctors { get; set; }
 

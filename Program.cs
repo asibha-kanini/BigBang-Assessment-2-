@@ -1,10 +1,12 @@
 using BigBang_Assessment_2.Interface;
 using BigBang_Assessment_2.Models;
 using BigBang_Assessment_2.Repository;
+using BigBang_Assessment_2.Repository.@interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +19,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
+
 builder.Services.AddDbContext<HospitalConetxt>(op => op.UseSqlServer(builder.Configuration.GetConnectionString("OnetoManycon")));
 
 builder.Services.AddControllers().AddNewtonsoftJson(Options =>
@@ -27,7 +30,9 @@ builder.Services.AddControllers().AddNewtonsoftJson(Options =>
 
 
 
-//builder.Services.AddScoped<IAdmin,AdminRepo>();
+builder.Services.AddScoped<IAdmin, AdminRepo>();
+builder.Services.AddScoped<IDoctor, DoctorRepo>();
+builder.Services.AddScoped<IPatient, PatientRepo>();
 builder.Services.AddControllers().AddNewtonsoftJson(Options =>
 {
     Options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;

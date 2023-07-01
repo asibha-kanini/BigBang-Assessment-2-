@@ -1,7 +1,7 @@
 ﻿using BigBang_Assessment_2.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BigBang_Assessment_2.Interface
+namespace BigBang_Assessment_2.Repository.@interface
 {
     public interface IPatient
     {

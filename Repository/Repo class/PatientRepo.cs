@@ -1,10 +1,11 @@
 ﻿using BigBang_Assessment_2.Models;
+using BigBang_Assessment_2.Repository.@interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BigBang_Assessment_2.Repository
 {
-    public class PatientRepo
+    public class PatientRepo :IPatient
     {
         private readonly HospitalConetxt _context;
 
@@ -28,7 +29,7 @@ namespace BigBang_Assessment_2.Repository
         {
             _context.Patients.Add(pt);
             await _context.SaveChangesAsync();
-            return new CreatedAtActionResult("GetPatient", "Patient", new { id = pt.PatientId }, pt);
+            return new CreatedAtActionResult("GetPatient", "Patient", new { id = pt.Patient_Id }, pt);
         }
 
         public async Task<IActionResult> PutPatient(int id, Patient pt)
@@ -48,7 +49,7 @@ namespace BigBang_Assessment_2.Repository
 
         public async Task<bool> Exists(int id)
         {
-            return await _context.Patients.AnyAsync(e => e.PatientId == id);
+            return await _context.Patients.AnyAsync(e => e.Patient_Id == id);
         }
 
     }

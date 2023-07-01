@@ -8,9 +8,10 @@ namespace BigBang_Assessment_2.Models
 
         public DbSet<Patient> Patients { get; set; }
 
-        public DbSet<Medication> Medications { get; set; }
+       
 
         public DbSet<Admin> Admins { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
         public HospitalConetxt(DbContextOptions<HospitalConetxt> options) : base(options)
         {
 

@@ -4,12 +4,21 @@ namespace BigBang_Assessment_2.Models
 {
     public class Doctor
     {
+       
         [Key]
-        public int DocId { get; set; }
-        public string DocName { get; set; }
-        public string DocSpecialty { get; set; }
-        public bool DocActive { get; set; }
-        public byte[]? DocImg { get; set; }
-        public virtual ICollection<Patient>? Patients { get; set; }
+        public int Doctor_Id { get; set; }
+        public string? Doctor_Name { get; set; }
+        public string? Specialization { get; set; }
+        public string? Doctor_Email { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
+        public string? Contact_No { get; set; }
+        public string? Password { get; set; }
+        public string? Status { get; set; }
+
+        public ICollection<Patient>? Patients { get; set; }
+        public ICollection<Appointment>? Appointments { get; set; }
+
+       
     }
 }
